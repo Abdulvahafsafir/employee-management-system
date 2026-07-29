@@ -1,173 +1,148 @@
-# Modern Employee Management System
+# 👨‍💼 Employee Management System
 
-Full React + Flask + MongoDB Atlas project.
+A modern **Full-Stack Employee Management System** built using **React.js, Flask, Python, and MongoDB Atlas**.
 
-## Included
+The application provides separate **Admin** and **Employee** portals for managing employee records, authentication, profiles, and daily attendance.
 
-### Admin
-- Admin login
-- Create employee
-- Read/search employees
-- Update employee
-- Delete employee
-- Set employee Active/Inactive
-- View all daily attendance
-- Search attendance by employee
-- Filter attendance by date
+Employees can securely create their **own password** using their Employee ID and registered email.
 
-### Employee
-- First-time "Create Password"
-- Employee creates own password using Employee ID + registered email
-- Secure password hashing
-- Employee login
-- Employee dashboard
-- View profile
-- Update email and phone
-- Daily Check In
-- Daily Check Out
-- Login/check-in time
-- Logout/check-out time
-- Working-duration calculation
-- Latest 31 attendance records
+---
 
-## Important security note
+## 🚀 Features
 
-Do not put your MongoDB password inside app.py.
-Use PowerShell environment variables.
+### 👨‍💼 Admin Portal
 
-If a MongoDB password has been shared publicly or pasted into a chat/code repository,
-reset it in MongoDB Atlas before using this project.
+- 🔐 Secure Admin Login
+- 📊 Modern Admin Dashboard
+- ➕ Add New Employees
+- 👁️ View Employee Records
+- ✏️ Update Employee Details
+- 🗑️ Delete Employees
+- 🔍 Search Employees
+- 🟢 Active / Inactive Employee Status
+- 📅 View Employee Attendance
+- 🔎 Search Attendance Records
+- 📆 Filter Attendance by Date
 
-## 1. MongoDB Atlas
+### 👨‍💻 Employee Portal
 
-In Atlas:
-1. Create/confirm a Database Access user.
-2. Copy the exact database username.
-3. Set a new database password.
-4. In Network Access, allow your current IP address.
-5. The included app is configured for cluster0.wavwom7.mongodb.net.
+- 🔐 Secure Employee Login
+- 🔑 First-Time Password Creation
+- 👤 Employee Profile
+- 📊 Personal Dashboard
+- ✏️ Update Email & Phone
+- 🟢 Daily Check-In
+- 🔴 Daily Check-Out
+- ⏰ Login Time Tracking
+- ⏰ Logout Time Tracking
+- ⌛ Automatic Working Hours Calculation
+- 📅 Attendance History
 
-## 2. Run backend
+---
 
-Open PowerShell in the project folder:
+## 🔑 Employee Password System
 
-```powershell
-cd .\backend
+The Admin does **not** create or see employee passwords.
 
-python -m pip install -r requirements.txt
+The authentication flow works like this:
 
-$env:MONGO_USERNAME="YOUR_EXACT_ATLAS_DATABASE_USERNAME"
-$env:MONGO_PASSWORD="YOUR_NEW_ATLAS_DATABASE_PASSWORD"
-$env:JWT_SECRET="use-a-long-random-secret-here"
-$env:ADMIN_PASSWORD="Admin@123"
+Admin creates employee
 
-python app.py
-```
+↓  
 
-Successful output:
+Employee receives Employee ID
 
-```text
-MongoDB Atlas connected successfully!
-Initial admin created: ADMIN001
-Running on http://127.0.0.1:5000
-```
+↓
 
-Keep this terminal open.
+Employee opens the Login page
 
-## 3. Run frontend
+↓
 
-Open a second PowerShell:
+Clicks **Create Password**
 
-```powershell
-cd .\frontend
-npm install
-npm run dev
-```
+↓
 
-Open the address shown by Vite, normally:
+Enters Employee ID + Registered Email
 
-```text
-http://localhost:5173
-```
+↓
 
-## 4. Admin login
+Creates their own password
 
-Employee ID:
+↓
 
-```text
-ADMIN001
-```
+Password is securely hashed
 
-Password is whatever you set in ADMIN_PASSWORD before the admin is first created.
+↓
 
-Example:
+Employee can login
 
-```text
-Admin@123
-```
+This provides better password privacy and security.
 
-## 5. Create employee
+---
 
-Admin -> Employees -> Add Employee.
+## 🛠️ Tech Stack
 
-Example:
+### Frontend
 
-```text
-Employee ID: EMP001
-Name: Abdul
-Email: employee@example.com
-Department: IT
-Designation: Software Developer
-Salary: 30000
-Status: Active
-```
+- React.js
+- Vite
+- JavaScript
+- CSS3
+- Axios
+- Lucide React
 
-The admin DOES NOT create or see the employee password.
+### Backend
 
-## 6. Employee creates own password
+- Python
+- Flask
+- Flask-CORS
+- REST API
+- JWT Authentication
+- Werkzeug Password Hashing
+- Gunicorn
 
-Logout from Admin.
+### Database
 
-On Login page click:
+- MongoDB
+- MongoDB Atlas
+- PyMongo
+
+### Development Tools
+
+- Git
+- GitHub
+- VS Code
+- Postman
+- MongoDB Compass
+
+---
+
+## 📁 Project Structure
 
 ```text
-Create Password
-```
-
-Enter:
-
-```text
-Employee ID: EMP001
-Registered Email: employee@example.com
-New Password: employee's chosen password
-Confirm Password: same password
-```
-
-Then return to login and sign in.
-
-## 7. Attendance
-
-Employee:
-
-```text
-Login
-  -> Dashboard
-  -> Check In
-  -> login time stored
-  -> Check Out
-  -> logout time stored
-  -> working duration calculated
-```
-
-Admin can see these records from the Attendance page.
-
-## Database collections
-
-The app automatically uses:
-
-```text
-employee_management
-  employees
-  users
-  attendance
-```
+employee-management-system/
+│
+├── backend/
+│   ├── app.py
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Login.jsx
+│   │   │   ├── CreatePassword.jsx
+│   │   │   ├── AdminDashboard.jsx
+│   │   │   ├── EmployeeDashboard.jsx
+│   │   │   └── Sidebar.jsx
+│   │   │
+│   │   ├── App.jsx
+│   │   ├── api.js
+│   │   ├── main.jsx
+│   │   └── style.css
+│   │
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.js
+│
+├── .gitignore
+└── README.md
